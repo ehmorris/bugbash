@@ -23,7 +23,7 @@ body {
   display: flex;
   flex: 1;
   width: 100%;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .leaderboard-row:last-of-type {
@@ -60,7 +60,11 @@ body {
 }
 
 .progress_bar-section--pending {
-  background: gray;
+  background:
+    linear-gradient(135deg, white 22px, #0ecb27 22px, #0ecb27 24px, transparent 24px, transparent 67px, #0ecb27 67px, #0ecb27 69px, transparent 69px)
+   ,linear-gradient(225deg, white 22px, #0ecb27 22px, #0ecb27 24px, transparent 24px, transparent 67px, #0ecb27 67px, #0ecb27 69px, transparent 69px) 0 64px;
+  background-color: white;
+  background-size: 64px 128px;
 }
 
 .number_done {

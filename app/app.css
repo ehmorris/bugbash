@@ -47,7 +47,6 @@ body {
 .card_bar-card {
   background-color: #00bb08;
   margin-left: 2px;
-  flex: 1;
 }
 
 .card_bar-card--in_progress {

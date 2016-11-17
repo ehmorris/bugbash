@@ -38,21 +38,19 @@ angular.module('myApp').controller('BugBashCtrl', ['$scope', function($scope) {
     });
   };
 
-  // - auth button so that you don't get a popup warning
-  // - also make auth work on first load
   // - refresh automatically
   var refresh_standings = function() {
-    Trello.get("/lists/568fe9b2d68b014a69ee8d6c/cards", function(ready_cards) {
+    Trello.get("/lists/581f730eea0276457bd0a260/cards", function(ready_cards) {
       _.each(ready_cards, function(card) {
         var points = _.sum(_.map(card.labels, function(label) { return parseInt(label.name) })) || 1;
 
         totals.ready += points;
       });
 
-      Trello.get("/lists/547bad436ce0b52beae47353/cards", function(in_progress_cards) {
+      Trello.get("/lists/581f7313077d5499a48ae766/cards", function(in_progress_cards) {
         add_cards_to_standings(in_progress_cards, "in_progress");
 
-        Trello.get("/lists/5603299f53eb86e80e713fb1/cards", function(done_cards) {
+        Trello.get("/lists/581f7314f45f91928c8f18d2/cards", function(done_cards) {
           add_cards_to_standings(done_cards, "done");
           var processed_standings = [];
           var max_total = -1;
@@ -78,6 +76,9 @@ angular.module('myApp').controller('BugBashCtrl', ['$scope', function($scope) {
 
           $scope.standings = processed_standings;
           $scope.totals = totals;
+          $scope.totals.percent_done = (totals.done / (totals.ready + totals.done + totals.in_progress)) * 100;
+          $scope.totals.percent_in_progress = (totals.in_progress / (totals.ready + totals.done + totals.in_progress)) * 100;
+          $scope.totals.percent_remaining = (totals.ready / (totals.ready + totals.done + totals.in_progress)) * 100;
           standings = {};
           totals = {};
           $scope.$apply();
@@ -86,7 +87,9 @@ angular.module('myApp').controller('BugBashCtrl', ['$scope', function($scope) {
     });
   };
 
-  refresh_standings();
-  // setInterval(refresh_standings, 5000);
+  if (Trello.authorized()) {
+    refresh_standings();
+    // setInterval(refresh_standings, 5000);
+  }
 }]);
 

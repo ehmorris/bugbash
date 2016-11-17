@@ -1,5 +1,5 @@
 Trello.authorize({
-  type: 'popup',
+  type: 'redirect',
   name: 'BugBash',
   scope: {
     read: 'true',

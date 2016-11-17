@@ -39,7 +39,7 @@
             ></div>
           </div>
 
-          <div class="number_done">99</div>
+	  <div class="number_done">{{row.total}}</div>
         </div>
       </div>
 
@@ -51,17 +51,18 @@
         >
           <div
             class="progress_bar-section progress_bar-section--done"
-            style="width: {{(totals.done / (totals.ready + totals.done + totals.in_progress)) * 100}}%;"
+            style="width: {{totals.percent_done}}%;"
           ></div>
           <div
             class="progress_bar-section progress_bar-section--pending"
-            style="width: {{(totals.in_progress / (totals.ready + totals.done + totals.in_progress)) * 100}}%;"
+            style="width: {{totals.percent_in_progress}}%;"
+          ></div>
+          <div
+            class="progress_bar-section progress_bar-section--remaining"
+            style="width: {{totals.percent_remaining}}%;"
           ></div>
         </div>
-
-        ready: {{totals.ready}}
-        done: {{totals.done}}
-        in progress: {{totals.in_progress}}
+        <div>{{totals.done + totals.in_progress}} / {{totals.ready}}</div>
       </div>
 
       <script src="bower_components/angular/angular.js"></script>

@@ -78,6 +78,14 @@ body {
   background-size: 64px 128px;
 }
 
+.progress_bar-section--remaining {
+  background:
+    linear-gradient(135deg, #f3d8d8 22px, #e42d10 22px, #e42d10 24px, transparent 24px, transparent 67px, #e42d10 67px, #e42d10 69px, transparent 69px)
+   ,linear-gradient(225deg, #f3d8d8 22px, #e42d10 22px, #e42d10 24px, transparent 24px, transparent 67px, #e42d10 67px, #e42d10 69px, transparent 69px) 0 64px;
+  background-color: #f3d8d8;
+  background-size: 64px 128px;
+}
+
 .number_done {
   align-items: center;
   color: #0ecb27;

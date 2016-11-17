@@ -6,7 +6,7 @@ body {
 .leaderboard {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 70vh;
   left: 0;
   position: absolute;
   top: 0;
@@ -35,20 +35,24 @@ body {
 .avatar-image {
   border-radius: 100px;
   display: block;
-  width: 150px;
+  width: 100px;
 }
 
-.card_bar {
+.progress_bar {
   display: flex;
   flex: 1;
   height: 100%;
+  position: relative;
 }
 
-.card_bar-card {
-  background-color: #00bb08;
-  margin-left: 2px;
+.progress_bar-section {
+  height: 100%;
 }
 
-.card_bar-card--in_progress {
-  background-color: #02e10c;
+.progress_bar-section--done {
+  background: green;
+}
+
+.progress_bar-section--pending {
+  background: gray;
 }

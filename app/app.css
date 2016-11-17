@@ -14,7 +14,6 @@ body {
   flex-direction: column;
   height: 70vh;
   left: 0;
-  position: absolute;
   top: 0;
   width: 100vw;
 }
@@ -53,10 +52,22 @@ body {
 
 .progress_bar-section {
   height: 100%;
+  position: relative;
 }
 
 .progress_bar-section--done {
   background: #0ecb27;
+}
+
+.progress_bar-section--done::before {
+  color: #fff;
+  content: "done";
+  font-weight: 800;
+  margin-left: 5%;
+  position: absolute;
+  text-transform: uppercase;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .progress_bar-section--pending {

@@ -1,19 +1,46 @@
-table {
-  margin: 0 auto;
-  margin-top: 20vh;
-}
-.row {
-  border-bottom: 10px solid white;
-}
-.card {
-  float: left;
-  background-color: #00bb08;
-  height: 60px;
-  box-shadow: 0 0 0 1px white inset;
-  border-radius: 3px;
+body {
+  overflow: hidden;
+  margin: 0;
 }
 
-.card--in_progress {
-  opacity: 0.2;
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+}
+
+.leaderboard-row {
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+.avatar {
+  height: 100%;
+}
+
+.avatar-image {
+  display: block;
+  height: 100%;
+}
+
+.card_bar {
+  display: flex;
+  flex: 1;
+  height: 100%;
+}
+
+.card_bar-card {
+  background-color: #00bb08;
+  border: 1px solid #000;
+  flex: 1;
+}
+
+.card_bar-card--in_progress {
   background-color: #02e10c;
 }

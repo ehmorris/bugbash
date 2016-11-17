@@ -16,20 +16,23 @@
   </head>
   <body>
     <div ng-controller="BugBashCtrl as ctrl">
-      <div ng-view></div>
+      <div class="leaderboard">
+        <div
+          class="leaderboard-row"
+          ng-repeat="row in standings | orderBy:['-done_total','-total']"
+        >
+          <div class="avatar">
+            <img class="avatar-image" alt src="{{users[row.user_id].url}}" />
+          </div>
 
-      <table>
-        <tr ng-repeat="row in standings | orderBy:['-done_total','-total']" class="row">
-          <td class="user">
-            <img alt src="{{users[row.user_id].url}}" style="height: 58px; border-radius: 3px;" />
-          </td>
-
-          <td class="cards">
-            <div ng-repeat="card in row.cards" style="width: {{card.points * 100}}px;" class="card card--{{ card.state }}">
-            </div>
-          </td>
-        </tr>
-      </table>
+          <div class="card_bar">
+            <div
+              ng-repeat="card in row.cards"
+              class="card_bar-card card_bar-card--{{ card.state }}"
+            ></div>
+          </div>
+        </div>
+      </div>
 
       <script src="bower_components/angular/angular.js"></script>
       <script src="app.js"></script>

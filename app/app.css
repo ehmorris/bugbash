@@ -1,6 +1,12 @@
+/* COLORS
+   $success_green: #0ecb27;
+   $error_red: #ff1414;
+*/
+
 body {
   overflow: hidden;
   margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .leaderboard {
@@ -50,9 +56,20 @@ body {
 }
 
 .progress_bar-section--done {
-  background: green;
+  background: #0ecb27;
 }
 
 .progress_bar-section--pending {
   background: gray;
+}
+
+.number_done {
+  align-items: center;
+  color: #0ecb27;
+  display: flex;
+  font-size: 4vh;
+  font-weight: 800;
+  justify-content: center;
+  line-height 1;
+  width: 100px;
 }

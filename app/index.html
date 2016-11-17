@@ -25,12 +25,21 @@
             <img class="avatar-image" alt src="{{users[row.user_id].url}}" />
           </div>
 
-          <div class="card_bar">
+          <div
+            class="progress_bar progress_bar--horizontal"
+            style="width: 100%;"
+          >
             <div
-              ng-repeat="card in row.cards"
-              class="card_bar-card card_bar-card--{{ card.state }}"
+              class="progress_bar-section progress_bar-section--done"
+              style="width: 50%;"
+            ></div>
+            <div
+              class="progress_bar-section progress_bar-section--pending"
+              style="width: 50%;"
             ></div>
           </div>
+
+          <div class="number_done">99</div>
         </div>
       </div>
 

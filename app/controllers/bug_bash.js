@@ -19,17 +19,19 @@ angular.module('myApp').controller('BugBashCtrl', ['$scope', function($scope) {
   };
 
   var standings = {};
+  var totals = {ready: 0, in_progress: 0, done: 0};
 
   var add_cards_to_standings = function(cards, state) {
     _.each(cards, function(card) {
-      var points = _.sum(_.map(card.labels, function(label) { return parseInt(label.name) }));
+      var points = _.sum(_.map(card.labels, function(label) { return parseInt(label.name) })) || 1;
+      totals[state] += points;
 
       _.each(card.idMembers, function(user_id) {
         if (!standings[user_id]) standings[user_id] = [];
 
         standings[user_id].push({
           title: card.name,
-          points: (points / card.idMembers.length) || 1,
+          points: points / card.idMembers.length,
           state: state
         });
       });
@@ -40,44 +42,49 @@ angular.module('myApp').controller('BugBashCtrl', ['$scope', function($scope) {
   // - also make auth work on first load
   // - refresh automatically
   var refresh_standings = function() {
-    // get the number of cards that are ready so that we can have three numbers:
-    // 1. total number of points, 2. total ready, 3. total in progress
-    Trello.get("/lists/547bad436ce0b52beae47353/cards", function(in_progress_cards) {
-      add_cards_to_standings(in_progress_cards, "in_progress");
+    Trello.get("/lists/568fe9b2d68b014a69ee8d6c/cards", function(ready_cards) {
+      _.each(ready_cards, function(card) {
+        var points = _.sum(_.map(card.labels, function(label) { return parseInt(label.name) })) || 1;
 
-      Trello.get("/lists/5603299f53eb86e80e713fb1/cards", function(done_cards) {
-        add_cards_to_standings(done_cards, "done");
-        var processed_standings = [];
-        // for each person, want percentage done
-        // also want number of total points scaled to person who has the most. ie if person number one has 14 done, then everything's scaled to 14.
-        var max_total = -1;
-        _.each(standings, function(cards, user_id) {
-          cards_by_state = _.partition(cards, function(c) { return c.state == 'done' });
-          var total = _.sum(_.map(cards, function(c) { return c.points }));
-          var done = _.sum(_.map(cards_by_state[0], function(c) { return c.points }));
+        totals.ready += points;
+      });
 
-          max_total = Math.max(total, max_total);
+      Trello.get("/lists/547bad436ce0b52beae47353/cards", function(in_progress_cards) {
+        add_cards_to_standings(in_progress_cards, "in_progress");
 
-          processed_standings.push({
-            user_id: user_id,
-            cards: cards_by_state[0].concat(cards_by_state[1]),
-            done_total: done,
-            total: total,
-            percent_done: (done / total) * 100
+        Trello.get("/lists/5603299f53eb86e80e713fb1/cards", function(done_cards) {
+          add_cards_to_standings(done_cards, "done");
+          var processed_standings = [];
+          var max_total = -1;
+          _.each(standings, function(cards, user_id) {
+            cards_by_state = _.partition(cards, function(c) { return c.state == 'done' });
+            var total = _.sum(_.map(cards, function(c) { return c.points }));
+            var done = _.sum(_.map(cards_by_state[0], function(c) { return c.points }));
+
+            max_total = Math.max(total, max_total);
+
+            processed_standings.push({
+              user_id: user_id,
+              cards: cards_by_state[0].concat(cards_by_state[1]),
+              done_total: done,
+              total: total,
+              percent_done: (done / total) * 100
+            });
           });
-        });
 
-        _.each(processed_standings, function(obj) {
-          obj.percent = (obj.total / max_total) * 100;
-        });
+          _.each(processed_standings, function(obj) {
+            obj.percent = (obj.total / max_total) * 100;
+          });
 
-        $scope.standings = processed_standings;
-        standings = {};
-        $scope.$apply();
+          $scope.standings = processed_standings;
+          $scope.totals = totals;
+          standings = {};
+          totals = {};
+          $scope.$apply();
+        });
       });
     });
   };
-
 
   refresh_standings();
   // setInterval(refresh_standings, 5000);

@@ -27,15 +27,15 @@
 
           <div
             class="progress_bar progress_bar--horizontal"
-            style="width: 100%;"
+	    style="width: {{row.percent}}%;"
           >
             <div
               class="progress_bar-section progress_bar-section--done"
-              style="width: 50%;"
+	      style="width: {{row.percent_done}}%;"
             ></div>
             <div
               class="progress_bar-section progress_bar-section--pending"
-              style="width: 50%;"
+	      style="width: {{row.percent - row.percent_done}}%;"
             ></div>
           </div>
 

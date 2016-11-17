@@ -26,7 +26,7 @@
           </div>
 
           <div
-            class="progress_bar progress_bar--horizontal"
+            class="progress_bar"
 	          style="width: {{row.percent}}%;"
           >
             <div
@@ -44,6 +44,21 @@
       </div>
 
       <div>
+
+        <div
+          class="progress_bar"
+          style="width: 100%; height: 20px;"
+        >
+          <div
+            class="progress_bar-section progress_bar-section--done"
+            style="width: {{(totals.done / (totals.ready + totals.done + totals.in_progress)) * 100}}%;"
+          ></div>
+          <div
+            class="progress_bar-section progress_bar-section--pending"
+            style="width: {{(totals.in_progress / (totals.ready + totals.done + totals.in_progress)) * 100}}%;"
+          ></div>
+        </div>
+
         ready: {{totals.ready}}
         done: {{totals.done}}
         in progress: {{totals.in_progress}}

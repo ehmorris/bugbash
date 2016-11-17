@@ -38,18 +38,39 @@ angular.module('myApp').controller('BugBashCtrl', ['$scope', function($scope) {
 
   // - auth button so that you don't get a popup warning
   // - also make auth work on first load
-  // - refresh automatically (and make sure we don't break rate limits)
+  // - refresh automatically
   var refresh_standings = function() {
+    // get the number of cards that are ready so that we can have three numbers:
+    // 1. total number of points, 2. total ready, 3. total in progress
     Trello.get("/lists/547bad436ce0b52beae47353/cards", function(in_progress_cards) {
       add_cards_to_standings(in_progress_cards, "in_progress");
 
       Trello.get("/lists/5603299f53eb86e80e713fb1/cards", function(done_cards) {
         add_cards_to_standings(done_cards, "done");
         var processed_standings = [];
+        // for each person, want percentage done
+        // also want number of total points scaled to person who has the most. ie if person number one has 14 done, then everything's scaled to 14.
+        var max_total = -1;
         _.each(standings, function(cards, user_id) {
           cards_by_state = _.partition(cards, function(c) { return c.state == 'done' });
-          processed_standings.push({user_id: user_id, cards: cards_by_state[0].concat(cards_by_state[1]), done_total: _.sum(_.map(cards_by_state[0], function(c) { return c.points })), total: _.sum(_.map(cards, function(c) { return c.points }))});
+          var total = _.sum(_.map(cards, function(c) { return c.points }));
+          var done = _.sum(_.map(cards_by_state[0], function(c) { return c.points }));
+
+          max_total = Math.max(total, max_total);
+
+          processed_standings.push({
+            user_id: user_id,
+            cards: cards_by_state[0].concat(cards_by_state[1]),
+            done_total: done,
+            total: total,
+            percent_done: (done / total) * 100
+          });
         });
+
+        _.each(processed_standings, function(obj) {
+          obj.percent = (obj.total / max_total) * 100;
+        });
+
         $scope.standings = processed_standings;
         standings = {};
         $scope.$apply();

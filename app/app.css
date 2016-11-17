@@ -72,9 +72,9 @@ body {
 
 .progress_bar-section--pending {
   background:
-    linear-gradient(135deg, white 22px, #0ecb27 22px, #0ecb27 24px, transparent 24px, transparent 67px, #0ecb27 67px, #0ecb27 69px, transparent 69px)
-   ,linear-gradient(225deg, white 22px, #0ecb27 22px, #0ecb27 24px, transparent 24px, transparent 67px, #0ecb27 67px, #0ecb27 69px, transparent 69px) 0 64px;
-  background-color: white;
+    linear-gradient(135deg, #d8f3db 22px, #0ecb27 22px, #0ecb27 24px, transparent 24px, transparent 67px, #0ecb27 67px, #0ecb27 69px, transparent 69px)
+   ,linear-gradient(225deg, #d8f3db 22px, #0ecb27 22px, #0ecb27 24px, transparent 24px, transparent 67px, #0ecb27 67px, #0ecb27 69px, transparent 69px) 0 64px;
+  background-color: #d8f3db;
   background-size: 64px 128px;
 }
 

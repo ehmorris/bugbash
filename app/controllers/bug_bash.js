@@ -37,10 +37,9 @@ angular.module('myApp').controller('BugBashCtrl', ['$scope', function($scope) {
   };
 
   // - auth button so that you don't get a popup warning
-  // - style the standings better, include CSS transitions when positions change
+  // - also make auth work on first load
   // - refresh automatically (and make sure we don't break rate limits)
   var refresh_standings = function() {
-
     Trello.get("/lists/547bad436ce0b52beae47353/cards", function(in_progress_cards) {
       add_cards_to_standings(in_progress_cards, "in_progress");
 

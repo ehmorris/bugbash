@@ -48,7 +48,7 @@
             </div>
             <div
               class="progress_bar-section progress_bar-section--pending"
-	            style="width: {{row.percent - row.percent_done}}%;"
+	            style="width: {{100 - row.percent_done}}%;"
             ></div>
           </div>
 
@@ -71,7 +71,6 @@
                     fill-rule="evenodd"
                   />
                 </svg>
-                {{totals.done + totals.in_progress}} / {{totals.ready}}
               </div>
             </div>
             <div
@@ -81,7 +80,11 @@
             <div
               class="progress_bar-section"
               style="width: {{totals.percent_remaining}}%;"
-            ></div>
+            >
+              <div class="progress_bar-section-text progress_bar-section-text--dark">
+                {{totals.ready}} remaining
+	      </div>
+	    </div>
           </div>
         </div>
       </div>

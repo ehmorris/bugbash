@@ -12,7 +12,7 @@ body {
 .leaderboard {
   display: flex;
   flex-direction: column;
-  height: 70vh;
+  height: 100vh;
   left: 0;
   top: 0;
   width: 100vw;
@@ -50,6 +50,10 @@ body {
   position: relative;
 }
 
+.progress_bar--colored_background {
+  background: #f7f7f7;
+}
+
 .progress_bar-section {
   height: 100%;
   position: relative;
@@ -70,6 +74,12 @@ body {
   position: absolute;
   text-transform: uppercase;
   top: 0;
+}
+
+.progress_bar-section-text-icon {
+  fill: #fff;
+  height: 20px;
+  margin-right: 1rem;
 }
 
 .progress_bar-section--pending {

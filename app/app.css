@@ -52,6 +52,7 @@ body {
 .progress_bar {
   display: flex;
   height: 100%;
+  transition: all .2s ease;
 }
 
 .progress_bar--fill_width {

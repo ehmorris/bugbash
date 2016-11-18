@@ -38,7 +38,6 @@ angular.module('myApp').controller('BugBashCtrl', ['$scope', function($scope) {
     });
   };
 
-  // - refresh automatically
   var refresh_standings = function() {
     Trello.get("/lists/581f730eea0276457bd0a260/cards", function(ready_cards) {
       _.each(ready_cards, function(card) {
@@ -80,7 +79,7 @@ angular.module('myApp').controller('BugBashCtrl', ['$scope', function($scope) {
           $scope.totals.percent_in_progress = (totals.in_progress / (totals.ready + totals.done + totals.in_progress)) * 100;
           $scope.totals.percent_remaining = (totals.ready / (totals.ready + totals.done + totals.in_progress)) * 100;
           standings = {};
-          totals = {};
+          totals = {ready: 0, in_progress: 0, done: 0};
           $scope.$apply();
         });
       });
@@ -89,7 +88,7 @@ angular.module('myApp').controller('BugBashCtrl', ['$scope', function($scope) {
 
   if (Trello.authorized()) {
     refresh_standings();
-    // setInterval(refresh_standings, 5000);
+    setInterval(refresh_standings, 5000);
   }
 }]);
 

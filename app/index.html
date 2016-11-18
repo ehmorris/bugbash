@@ -19,7 +19,7 @@
       <div class="leaderboard" ng-cloak>
         <div
           class="leaderboard-row"
-          ng-repeat="row in standings | orderBy:['-done_total','-total']"
+          ng-repeat="row in standings track by $id(row) | orderBy:['-done_total','-total']"
         >
           <div class="avatar">
             <img class="avatar-image" alt src="{{users[row.user_id].url}}" />

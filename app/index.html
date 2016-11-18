@@ -16,7 +16,7 @@
   </head>
   <body>
     <div ng-controller="BugBashCtrl as ctrl">
-      <div class="leaderboard">
+      <div class="leaderboard" ng-cloak>
         <div
           class="leaderboard-row"
           ng-repeat="row in standings | orderBy:['-done_total','-total']"

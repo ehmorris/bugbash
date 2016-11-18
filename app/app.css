@@ -65,6 +65,7 @@ body {
 .progress_bar-section {
   height: 100%;
   position: relative;
+  transition: all .2s ease;
 }
 
 .progress_bar-section--done {
@@ -113,7 +114,7 @@ body {
   width: 100px;
 }
 
-@keyframes appear {
+@keyframes zoom_appear {
   0% {
     opacity: 0;
     transform: scale(0.5);
@@ -123,37 +124,110 @@ body {
     transform: scale(1);
   }
 }
-.leaderboard-row {
-  animation: appear .2s ease both;
+.avatar {
+  animation: zoom_appear .2s ease both;
 }
-.leaderboard-row:nth-child(1) {
+.leaderboard-row:nth-child(1) .avatar {
   animation-delay: 0.1s;
 }
-.leaderboard-row:nth-child(2) {
+.leaderboard-row:nth-child(2) .avatar {
   animation-delay: 0.2s;
 }
-.leaderboard-row:nth-child(3) {
+.leaderboard-row:nth-child(3) .avatar {
   animation-delay: 0.3s;
 }
-.leaderboard-row:nth-child(4) {
+.leaderboard-row:nth-child(4) .avatar {
   animation-delay: 0.4s;
 }
-.leaderboard-row:nth-child(5) {
+.leaderboard-row:nth-child(5) .avatar {
   animation-delay: 0.5s;
 }
-.leaderboard-row:nth-child(6) {
+.leaderboard-row:nth-child(6) .avatar {
   animation-delay: 0.6s;
 }
-.leaderboard-row:nth-child(7) {
+.leaderboard-row:nth-child(7) .avatar {
   animation-delay: 0.7s;
 }
-.leaderboard-row:nth-child(8) {
+.leaderboard-row:nth-child(8) .avatar {
   animation-delay: 0.8s;
 }
-.leaderboard-row:nth-child(9) {
+.leaderboard-row:nth-child(9) .avatar {
   animation-delay: 0.9s;
 }
-.leaderboard-row:nth-child(10) {
+.leaderboard-row:nth-child(10) .avatar {
   animation-delay: 1s;
 }
+.leaderboard-row:nth-child(11) .avatar {
+  animation-delay: 1.1s;
+}
+.leaderboard-row:nth-child(12) .avatar {
+  animation-delay: 1.2s;
+}
+.leaderboard-row:nth-child(13) .avatar {
+  animation-delay: 1.3s;
+}
+.leaderboard-row:nth-child(14) .avatar {
+  animation-delay: 1.4s;
+}
+.leaderboard-row:nth-child(15) .avatar {
+  animation-delay: 1.5s;
+}
 
+@keyframes slide_appear {
+  0% {
+    opacity: 0;
+    transform: translateX(-90%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.progress_bar-section {
+  animation: slide_appear .2s ease both;
+}
+.leaderboard-row:nth-child(1) .progress_bar-section {
+  animation-delay: 0.1s;
+}
+.leaderboard-row:nth-child(2) .progress_bar-section {
+  animation-delay: 0.2s;
+}
+.leaderboard-row:nth-child(3) .progress_bar-section {
+  animation-delay: 0.3s;
+}
+.leaderboard-row:nth-child(4) .progress_bar-section {
+  animation-delay: 0.4s;
+}
+.leaderboard-row:nth-child(5) .progress_bar-section {
+  animation-delay: 0.5s;
+}
+.leaderboard-row:nth-child(6) .progress_bar-section {
+  animation-delay: 0.6s;
+}
+.leaderboard-row:nth-child(7) .progress_bar-section {
+  animation-delay: 0.7s;
+}
+.leaderboard-row:nth-child(8) .progress_bar-section {
+  animation-delay: 0.8s;
+}
+.leaderboard-row:nth-child(9) .progress_bar-section {
+  animation-delay: 0.9s;
+}
+.leaderboard-row:nth-child(10) .progress_bar-section {
+  animation-delay: 1s;
+}
+.leaderboard-row:nth-child(11) .progress_bar-section {
+  animation-delay: 1.1s;
+}
+.leaderboard-row:nth-child(12) .progress_bar-section {
+  animation-delay: 1.2s;
+}
+.leaderboard-row:nth-child(13) .progress_bar-section {
+  animation-delay: 1.3s;
+}
+.leaderboard-row:nth-child(14) .progress_bar-section {
+  animation-delay: 1.4s;
+}
+.leaderboard-row:nth-child(15) .progress_bar-section {
+  animation-delay: 1.5s;
+}

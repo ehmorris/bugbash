@@ -25,6 +25,10 @@ body {
   margin-bottom: 4px;
 }
 
+.leaderboard-row--double_height {
+  flex: 2;
+}
+
 .leaderboard-row:last-of-type {
   margin-bottom: 0;
 }
@@ -34,6 +38,8 @@ body {
   display: flex;
   height: 100%;
   justify-content: center;
+  position: absolute;
+  right: .5rem;
   width: 200px;
 }
 
@@ -52,7 +58,7 @@ body {
 .progress_bar {
   display: flex;
   height: 100%;
-  transition: all .2s ease;
+  transition: all 1s ease;
 }
 
 .progress_bar--fill_width {
@@ -66,7 +72,8 @@ body {
 .progress_bar-section {
   height: 100%;
   position: relative;
-  transition: all .2s ease;
+  position: relative;
+  transition: all 1s ease;
 }
 
 .progress_bar-section--done {
@@ -77,9 +84,11 @@ body {
   align-items: center;
   color: #fff;
   display: flex;
+  font-size: 4vh;
   font-weight: 800;
   height: 100%;
   margin: 0 1rem;
+  position: absolute;
   position: absolute;
   right: 0;
   text-transform: uppercase;
@@ -92,7 +101,7 @@ body {
 
 .progress_bar-section-text-icon {
   fill: #fff;
-  height: 20px;
+  height: 30px;
   margin-right: 1rem;
 }
 

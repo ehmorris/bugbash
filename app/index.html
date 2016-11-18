@@ -25,66 +25,71 @@
             <img class="avatar-image" alt src="{{users[row.user_id].url}}" />
           </div>
 
-          <div
-            class="progress_bar"
-	          style="width: {{row.percent}}%;"
-          >
+          <div class="progress_bar_container">
             <div
-              class="progress_bar-section progress_bar-section--done"
-	            style="width: {{row.percent_done}}%;"
+              class="progress_bar"
+              style="width: {{row.percent}}%;"
             >
-              <div class="progress_bar-section-text">
-                <svg
-                  class="progress_bar-section-text-icon"
-                  viewBox="0 0 19 14"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5.194 11.772l-4.09-4.09L0 6.58l2.177-2.242L3.28 5.442l4.11 4.106 8.323-8.436L16.81 0 19 2.226l-1.097 1.112-9.422 9.55L7.386 14l-2.192-2.226.002-.002z"
-                    fill-rule="evenodd"
-                  />
-                </svg>
+              <div
+                class="progress_bar-section progress_bar-section--done"
+                style="width: {{row.percent_done}}%;"
+              >
+                <div class="progress_bar-section-text">
+                  <svg
+                    class="progress_bar-section-text-icon"
+                    viewBox="0 0 19 14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5.194 11.772l-4.09-4.09L0 6.58l2.177-2.242L3.28 5.442l4.11 4.106 8.323-8.436L16.81 0 19 2.226l-1.097 1.112-9.422 9.55L7.386 14l-2.192-2.226.002-.002z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </div>
               </div>
+              <div
+                class="progress_bar-section progress_bar-section--pending"
+                style="width: {{100 - row.percent_done}}%;"
+              ></div>
             </div>
-            <div
-              class="progress_bar-section progress_bar-section--pending"
-	            style="width: {{100 - row.percent_done}}%;"
-            ></div>
           </div>
 
           <div class="number_done">{{row.total}}</div>
         </div>
+
         <div class="leaderboard-row">
-          <div class="progress_bar progress_bar--colored_background">
-            <div
-              class="progress_bar-section progress_bar-section--done"
-              style="width: {{totals.percent_done}}%;"
-            >
-              <div class="progress_bar-section-text">
-                <svg
-                  class="progress_bar-section-text-icon"
-                  viewBox="0 0 19 14"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5.194 11.772l-4.09-4.09L0 6.58l2.177-2.242L3.28 5.442l4.11 4.106 8.323-8.436L16.81 0 19 2.226l-1.097 1.112-9.422 9.55L7.386 14l-2.192-2.226.002-.002z"
-                    fill-rule="evenodd"
-                  />
-                </svg>
+          <div class="progress_bar_container">
+            <div class="progress_bar progress_bar--colored_background progress_bar--fill_width">
+              <div
+                class="progress_bar-section progress_bar-section--done"
+                style="width: {{totals.percent_done}}%;"
+              >
+                <div class="progress_bar-section-text">
+                  <svg
+                    class="progress_bar-section-text-icon"
+                    viewBox="0 0 19 14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5.194 11.772l-4.09-4.09L0 6.58l2.177-2.242L3.28 5.442l4.11 4.106 8.323-8.436L16.81 0 19 2.226l-1.097 1.112-9.422 9.55L7.386 14l-2.192-2.226.002-.002z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="progress_bar-section progress_bar-section--pending"
+                style="width: {{totals.percent_in_progress}}%;"
+              ></div>
+              <div
+                class="progress_bar-section"
+                style="width: {{totals.percent_remaining}}%;"
+              >
+                <div class="progress_bar-section-text progress_bar-section-text--dark">
+                  {{totals.ready}} remaining
+                </div>
               </div>
             </div>
-            <div
-              class="progress_bar-section progress_bar-section--pending"
-              style="width: {{totals.percent_in_progress}}%;"
-            ></div>
-            <div
-              class="progress_bar-section"
-              style="width: {{totals.percent_remaining}}%;"
-            >
-              <div class="progress_bar-section-text progress_bar-section-text--dark">
-                {{totals.ready}} remaining
-	      </div>
-	    </div>
           </div>
         </div>
       </div>

@@ -38,7 +38,12 @@
               <div
                 class="progress_bar-section progress_bar-section--pending"
                 style="width: {{100 - row.percent_done}}%;"
-              ></div>
+              >
+                <div ng-if="row.percent_done == 0" class="avatar avatar--pending">
+                  <span class="avatar-name" ng-bind="users[row.user_id].name"></span>
+                  <img class="avatar-image" alt src="{{users[row.user_id].url}}" />
+                </div>
+              </div>
             </div>
           </div>
 

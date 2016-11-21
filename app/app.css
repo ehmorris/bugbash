@@ -67,6 +67,10 @@ body {
   right: 2rem;
 }
 
+.avatar--pending .avatar-name {
+  color: black;
+}
+
 .avatar-name {
   color: #fff;
   font-size: 4vh;
